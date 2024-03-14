@@ -8,8 +8,38 @@
     <link rel="stylesheet" href="/css/style.css"/>
     <script src="/js/script.js" defer></script>
 
+    <!-- Bootstrap icons -->
+    <link rel="stylesheet" 
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Fontes -->
+    <link rel="stylesheet" href="https://use.typekit.net/fqb3uvf.css">
+
 </head>
 <body>
-    
+    <header>
+        <h1>PaperNote</h1>
+        <div id="search-container">
+            <i class="bi bi-search"></i>
+            <input type="text" id="search-input" placeholder="O que procura? 😉">
+    </div>
+    <button class="exports-notes">
+        Exportar CSV <i class="bi bi-download"></i>
+    </button>
+    </header>
+    <div id="add-note-container">
+        <input type="text" id="add-note-input" placeholder="Crie uma nova notinha! 📒">
+        <button class="add-note-btn">
+            <i class="bi bi-plus-lg"></i>
+        </button>
+    </div>
+    <div id="notes-container">
+        <div class="note">
+            <textarea placeholder="Nota de teste"></textarea>
+            <i class="bi bi-pin"></i>
+            <i class="bi bi-x-lg"></i>
+            <i class="bi bi-file-earmark-plus"></i>
+        </div>
+    </div>
 </body>
 </html>
