@@ -19,6 +19,9 @@ h1{
     text-align: center;
 }
 
+input:focus{
+    outline: none;
+}
 /* Header */
 
 header{
@@ -47,6 +50,7 @@ header h1{
     background-color: #282a36;
     border-radius: 4px;
     width: 400px;
+    color: #6272a4;
 }
 
 #search-input::placeholder{
@@ -65,5 +69,40 @@ header h1{
 }
 
 #exports-notes:hover{
+    background-color: #b089e7;
+}
+
+/* notes container */
+
+#add-note-container{
+    display: flex;
+    width: 400px;
+    margin: 4rem auto 0;
+    gap: 0.5rem;
+}
+
+#add-note-container input,
+#add-note-container button{
+    padding: 8px;
+    border: none;
+}
+
+#add-note-container input{
+    flex: 1;
+    border-bottom: 2px solid #44475a;
+    background-color: transparent;
+    color: #6272a4;
+}
+
+#add-note-container button{
+    border-radius: 4px;
+    width: 2.3rem;
+    background-color: #bd93f9;
+    color: #f8f8f2;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+#add-note-container button:hover{
     background-color: #b089e7;
 }
