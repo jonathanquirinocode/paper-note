@@ -38,6 +38,10 @@ header h1{
     cursor: default;
 }
 
+.mobile-screen{
+    display: none;
+}
+
 #search-container{
     display: flex;
     align-items: center;
@@ -105,4 +109,119 @@ header h1{
 
 #add-note-container button:hover{
     background-color: #b089e7;
+}
+
+/* Notes */
+
+#notes-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 250px);
+    justify-content: center;
+    padding: 2rem 9rem;
+    padding-top: 6rem;
+    gap: 2rem;
+}
+
+.note{
+    min-height: 200px;
+    padding: 1rem;
+    background-color: #f1fa8c;
+    border-radius: 5px;
+    border: 2px solid #44475A;
+    box-shadow: 10px 10px 2px #16181f;
+    color: #000;
+    position: relative;
+}
+
+.note textarea{
+    background-color: transparent;
+    border: none;
+    resize: none;
+    height: 94%;
+    width: 100%;
+    outline: none;
+}
+
+.note:hover > i{
+    opacity: 1;
+}
+
+.note .bi-pin-fill{
+    position: absolute;
+    bottom: 1px;
+    left: 13px;
+    font-size: 1.2rem;
+    color: #44475a;
+    border-radius: 4px;
+    padding-top: 1px;
+    cursor: pointer;
+}
+
+.note 
+.bi-file-earmark-plus{
+    position: absolute;
+    right: 13px;
+    bottom: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #44475A;
+    transition: 0.3s;
+    opacity: 0;
+}
+.note 
+.bi-x-lg{
+    position: absolute;
+    right: 35px;
+    bottom: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #44475A;
+    transition: 0.3s;
+    opacity: 0;
+}
+
+.note .bi-file-earmark-plus:hover,
+.note .bi-x-lg:hover{
+    color: #6272a4;
+}
+
+.fixed .bi-pin-fill{
+    color: #b089e7;
+}
+
+@media (max-width: 450px){
+    header {
+        padding: 2rem 2rem;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    header h1{
+        font-size: 20px;
+            
+    }
+    header .bi-search{
+        background-color: #b089e7;
+        border-radius: 4px;
+        padding: 6px 8px;
+    }
+
+    .mobile-ocult{
+        display: none;
+    }
+
+    .mobile-screen{
+        display: contents;
+    }
+
+    #search-input {
+        width: 150px;
+    }
+    
+    #exports-notes {
+        display: none;
+    }
+
 }
