@@ -8,6 +8,8 @@ const addNoteBtn = document.querySelector(".add-note-btn");
 
 // showNotes is a function for show the notes save in dom
 function showNotes() {
+    cleanNotes();
+    
     getNotes().forEach((note) => {
     
         const noteELement = createNote(note.id, note.content, note.fixed);        
@@ -15,6 +17,11 @@ function showNotes() {
      notesContainer.appendChild(noteELement);
     });
     
+};
+
+//update in realtime the status fixed of the notes
+function cleanNotes(){
+    notesContainer.replaceChildren([]);
 };
 
 // Add note function
@@ -59,6 +66,35 @@ function createNote(id, content, fixed){
 
     textarea.placeholder = "Adicione sua anotação...";
 
+    const pinIcon = document.createElement("i")
+
+    pinIcon.classList.add(...["bi", "bi-pin-fill"]);
+
+    elementDiv.appendChild(pinIcon);
+
+    if(fixed){
+        elementDiv.classList.add("fixed");
+    }
+
+    // Events elementDiv
+
+    elementDiv.querySelector(".bi-pin-fill").addEventListener("click", () => {
+        toggleFixNote(id);
+    });
+
+    function toggleFixNote() {
+        const notes = getNotes();
+
+        const targetNote = notes.filter((note) => note.id === id)[0];
+
+        targetNote.fixed = !targetNote.fixed;
+
+        saveNotes(notes);
+
+        showNotes();
+    };
+
+
     return elementDiv;
 };
 
@@ -69,7 +105,9 @@ function getNotes(){
 
     const notes = JSON.parse(localStorage.getItem("notes") || "[]");
 
-    return notes;
+    const orderNotes = notes.sort((a,b) => (a.fixed > b.fixed ? -1 : 1));
+
+    return orderNotes;
 }
 
 // Save in LocalStorage funtion

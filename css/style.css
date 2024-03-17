@@ -185,8 +185,13 @@ header h1{
     color: #6272a4;
 }
 
+.fixed{
+    box-shadow: 5px 5px 1px #16181f;
+    border: 2px solid #6272a4;
+}
+
 .fixed .bi-pin-fill{
-    color: #b089e7;
+    color: #282a36;
 }
 
 @media (max-width: 450px){
