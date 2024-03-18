@@ -72,6 +72,18 @@ function createNote(id, content, fixed){
 
     elementDiv.appendChild(pinIcon);
 
+    const deleteIcon = document.createElement("i")
+
+    deleteIcon.classList.add(...["bi", "bi-x-lg"]);
+
+    elementDiv.appendChild(deleteIcon);
+
+    const duplicateIcon = document.createElement("i")
+
+    duplicateIcon.classList.add(...["bi", "bi-file-earmark-plus"]);
+
+    elementDiv.appendChild(duplicateIcon);
+
     if(fixed){
         elementDiv.classList.add("fixed");
     }
@@ -80,6 +92,16 @@ function createNote(id, content, fixed){
 
     elementDiv.querySelector(".bi-pin-fill").addEventListener("click", () => {
         toggleFixNote(id);
+    });
+    
+    //Active function deletNote
+    
+    elementDiv.querySelector(".bi-x-lg").addEventListener("click", () => {
+        deleteNote(id, elementDiv);
+    });
+
+    elementDiv.querySelector(".bi-file-earmark-plus").addEventListener("click", () => {
+        copyNote(id);
     });
 
     function toggleFixNote() {
@@ -96,6 +118,44 @@ function createNote(id, content, fixed){
 
 
     return elementDiv;
+};
+
+//Delete function
+
+function deleteNote(id, elementDiv){
+
+    const notes = getNotes().filter((note) => note.id !== id)
+    
+    saveNotes(notes);
+
+    notesContainer.removeChild(elementDiv);
+}
+
+//duplicate function
+
+function copyNote(id){
+
+    const notes = getNotes();
+    
+    const targetNote = notes.filter((note) => note.id === id)[0];
+
+    const noteObject = {
+        id: generatorId(),
+        content: targetNote.content,
+        fixed: false
+    };
+
+    const noteELement = createNote(
+        noteObject.id,
+        noteObject.content,
+        noteObject.fixed
+    );
+
+    notesContainer.appendChild(noteELement);
+
+    notes.push(noteObject);
+
+    saveNotes(notes);
 };
 
 // --------------LocalStorage--------------
