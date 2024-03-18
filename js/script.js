@@ -3,6 +3,7 @@
 const notesContainer = document.querySelector("#notes-container");
 const noteInput = document.querySelector("#add-note-input");
 const addNoteBtn = document.querySelector(".add-note-btn");
+const searchInput = document.querySelector("#search-input");
 
 //------ FUNCTION -------
 
@@ -12,9 +13,9 @@ function showNotes() {
     
     getNotes().forEach((note) => {
     
-        const noteELement = createNote(note.id, note.content, note.fixed);        
+        const noteElement = createNote(note.id, note.content, note.fixed);        
     
-     notesContainer.appendChild(noteELement);
+     notesContainer.appendChild(noteElement);
     });
     
 };
@@ -34,9 +35,9 @@ function addNote() {
         fixed: false,
     };
     
-    const noteELement = createNote(noteObject.id, noteObject.content);
+    const noteElement = createNote(noteObject.id, noteObject.content);
 
-    notesContainer.appendChild(noteELement);
+    notesContainer.appendChild(noteElement);
 
     notes.push(noteObject);
 
@@ -155,13 +156,13 @@ function copyNote(id){
         fixed: false
     };
 
-    const noteELement = createNote(
+    const noteElement = createNote(
         noteObject.id,
         noteObject.content,
         noteObject.fixed
     );
 
-    notesContainer.appendChild(noteELement);
+    notesContainer.appendChild(noteElement);
 
     notes.push(noteObject);
 
@@ -192,12 +193,34 @@ function getNotes(){
     const orderNotes = notes.sort((a,b) => (a.fixed > b.fixed ? -1 : 1));
 
     return orderNotes;
-}
+};
 
 // Save in LocalStorage funtion
 function saveNotes(notes){
     localStorage.setItem("notes", JSON.stringify(notes));
-}
+};
+
+function searchNotes(search){
+    const searchResults = getNotes().filter((note) => 
+        note.content.includes(search)
+    );
+    
+    console.log(searchResults);   
+    
+    if (search !==""){
+        cleanNotes();
+
+        searchResults.forEach((note) => {
+            const noteElement = createNote(note.id, note.content, note.fixed);
+            notesContainer.appendChild(noteElement);
+        }); 
+        return;
+    };
+
+    cleanNotes();
+    
+    showNotes();
+};
 
 // ----------------------------------------
 
@@ -213,6 +236,15 @@ noteInput.addEventListener("keypress", (e) => {
         e.preventDefault;
 
         addNote();
+    };
+});
+
+searchInput.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+        
+        const search = e.target.value;
+
+        searchNotes(search);
     };
 });
 
