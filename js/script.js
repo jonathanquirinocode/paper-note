@@ -86,7 +86,17 @@ function createNote(id, content, fixed){
 
     if(fixed){
         elementDiv.classList.add("fixed");
-    }
+    };
+
+    //Edit notes
+
+    elementDiv.querySelector("textarea").addEventListener("keyup", (e) => {
+
+        const noteContent = e.target.value;
+
+        updateNote(id, noteContent);
+
+    });
 
     // Events elementDiv
 
@@ -156,6 +166,20 @@ function copyNote(id){
     notes.push(noteObject);
 
     saveNotes(notes);
+};
+
+// Update note function
+
+function updateNote(id, newContent){
+
+    const notes = getNotes();
+
+    const targetNote = notes.filter((note) => note.id === id)[0];
+
+    targetNote.content = newContent;
+
+    saveNotes(notes);
+
 };
 
 // --------------LocalStorage--------------
