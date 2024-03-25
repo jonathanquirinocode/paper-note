@@ -85,6 +85,12 @@ function createNote(id, content, fixed){
     duplicateIcon.classList.add(...["bi", "bi-file-earmark-plus"]);
 
     elementDiv.appendChild(duplicateIcon);
+    
+    const colorSelectIcon = document.createElement("i")
+
+    colorSelectIcon.classList.add(...["bi", "bi-three-dots"]);
+
+    elementDiv.appendChild(colorSelectIcon);
 
     if(fixed){
         elementDiv.classList.add("fixed");
@@ -115,6 +121,21 @@ function createNote(id, content, fixed){
     elementDiv.querySelector(".bi-file-earmark-plus").addEventListener("click", () => {
         copyNote(id);
     });
+    
+    elementDiv.querySelector(".bi-three-dots").addEventListener("click", () => {
+        changeColor(id, elementDiv);
+    });
+
+    //change color
+
+    function changeColor(id,elementDiv){
+        
+        const note = getNotes().filter((note) => note.id !== id);
+
+        console.log(note);
+
+        elementDiv.style.backgroundColor = "#fff";
+    };
 
     function toggleFixNote() {
         const notes = getNotes();
@@ -127,7 +148,6 @@ function createNote(id, content, fixed){
 
         showNotes();
     };
-
 
     return elementDiv;
 };
@@ -272,7 +292,6 @@ searchInput.addEventListener("keypress", (e) => {
 exportBtn.addEventListener("click", (e) =>{
  exportData();
 });
-
 
 // INICIALIZATION
 // Run showNote for iniciation the save notes in localstorage
