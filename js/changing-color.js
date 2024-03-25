@@ -36,3 +36,8 @@
 // targetNote
 
 // saveNotes(notes);
+
+
+// getNotes().filter((note) => note.id !== id);
+
+// elementDiv.style.backgroundColor = "#fff";

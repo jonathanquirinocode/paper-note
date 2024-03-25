@@ -90,13 +90,13 @@ function createNote(id, content, fixed){
 
     colorSelectIcon.classList.add(...["bi", "bi-three-dots"]);
 
-    //colors menu
-
     elementDiv.appendChild(colorSelectIcon);
+
+    //colors menu
 
     const colorsOptions = document.createElement("ul");
 
-    colorsOptions.classList.add("colors-options");
+    colorsOptions.classList.add("colors-options", "hide");
 
     elementDiv.appendChild(colorsOptions);
 
@@ -221,17 +221,17 @@ function createNote(id, content, fixed){
     });
     
     elementDiv.querySelector(".bi-three-dots").addEventListener("click", () => {
-        changeColor(id, elementDiv);
+        colorsOptions.classList.toggle("hide");
     });
 
     //change color
 
-    function changeColor(id,elementDiv){
+    // function changeColor(id,elementDiv){
         
-        getNotes().filter((note) => note.id !== id);
+    //     getNotes().filter((note) => note.id !== id);
 
-        elementDiv.style.backgroundColor = "#fff";
-    };
+    //     elementDiv.style.backgroundColor = "#fff";
+    // };
 
     function toggleFixNote() {
         const notes = getNotes();
