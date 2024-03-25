@@ -90,7 +90,105 @@ function createNote(id, content, fixed){
 
     colorSelectIcon.classList.add(...["bi", "bi-three-dots"]);
 
+    //colors menu
+
     elementDiv.appendChild(colorSelectIcon);
+
+    const colorsOptions = document.createElement("ul");
+
+    colorsOptions.classList.add("colors-options");
+
+    elementDiv.appendChild(colorsOptions);
+
+    const paletteIcon = document.createElement("i");
+
+    paletteIcon.classList.add("bi", "bi-palette-fill");
+
+    colorsOptions.appendChild(paletteIcon);
+
+    //Yellow
+    
+    const liYellow = document.createElement("li");
+
+    liYellow.classList.add("yellow");
+
+    colorsOptions.appendChild(liYellow);
+
+    const yellow = document.createElement("span");
+
+    yellow.classList.add("color");
+
+    liYellow.appendChild(yellow);
+
+    //Green
+
+    const liGreen = document.createElement("li")
+
+    liGreen.classList.add("green");
+
+    colorsOptions.appendChild(liGreen);
+
+    const green = document.createElement("span");
+
+    green.classList.add("color");
+
+    liGreen.appendChild(green);
+
+    //Pink
+
+    const liPink = document.createElement("li")
+
+    liPink.classList.add("pink");
+
+    colorsOptions.appendChild(liPink);
+
+    const pink = document.createElement("span");
+
+    pink.classList.add("color");
+
+    liPink.appendChild(pink);
+
+    //Red
+
+    const liRed = document.createElement("li")
+
+    liRed.classList.add("red");
+
+    colorsOptions.appendChild(liRed);
+
+    const red = document.createElement("span");
+
+    red.classList.add("color");
+
+    liRed.appendChild(red);
+
+    //Cyan
+
+    const liCyan = document.createElement("li")
+
+    liCyan.classList.add("cyan");
+
+    colorsOptions.appendChild(liCyan);
+
+    const cyan = document.createElement("span");
+
+    cyan.classList.add("color");
+
+    liCyan.appendChild(cyan);
+
+    //Orange
+
+    const liOrange = document.createElement("li")
+
+    liOrange.classList.add("orange");
+
+    colorsOptions.appendChild(liOrange);
+
+    const orange = document.createElement("span");
+
+    orange.classList.add("color");
+
+    liOrange.appendChild(orange);
 
     if(fixed){
         elementDiv.classList.add("fixed");
@@ -130,9 +228,7 @@ function createNote(id, content, fixed){
 
     function changeColor(id,elementDiv){
         
-        const note = getNotes().filter((note) => note.id !== id);
-
-        console.log(note);
+        getNotes().filter((note) => note.id !== id);
 
         elementDiv.style.backgroundColor = "#fff";
     };
