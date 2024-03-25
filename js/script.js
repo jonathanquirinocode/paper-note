@@ -54,7 +54,7 @@ function generatorId(){
 
 // Create note function
 
-function createNote(id, content, fixed){
+function createNote(id, content, fixed, color){
 
     const elementDiv = document.createElement("div");
 
@@ -224,14 +224,83 @@ function createNote(id, content, fixed){
         colorsOptions.classList.toggle("hide");
     });
 
-    //change color
-
-    // function changeColor(id,elementDiv){
+    yellow.addEventListener("click", () => {
         
-    //     getNotes().filter((note) => note.id !== id);
+        function changeColor(id, elementDiv,){
+        
+            getNotes().filter((note) => note.id !== id);
+   
+            elementDiv.style.backgroundColor = "#f1fa8c";
+       };
 
-    //     elementDiv.style.backgroundColor = "#fff";
-    // };
+       changeColor(id, elementDiv);
+
+    });
+
+    green.addEventListener("click", () => {
+        
+        function changeColor(id, elementDiv,){
+        
+            getNotes().filter((note) => note.id !== id);
+   
+            elementDiv.style.backgroundColor = "#50fa7b";
+       };
+
+       changeColor(id, elementDiv);
+
+    });
+
+    pink.addEventListener("click", () => {
+        
+        function changeColor(id, elementDiv,){
+        
+            getNotes().filter((note) => note.id !== id);
+   
+            elementDiv.style.backgroundColor = "#ff79c6";
+       };
+
+       changeColor(id, elementDiv);
+
+    });
+
+    red.addEventListener("click", () => {
+        
+        function changeColor(id, elementDiv,){
+        
+            getNotes().filter((note) => note.id !== id);
+   
+            elementDiv.style.backgroundColor = "#ff5555";
+       };
+
+       changeColor(id, elementDiv);
+
+    });
+
+    cyan.addEventListener("click", () => {
+        
+        function changeColor(id, elementDiv,){
+        
+            getNotes().filter((note) => note.id !== id);
+   
+            elementDiv.style.backgroundColor = "#8be9fd";
+       };
+
+       changeColor(id, elementDiv);
+
+    });
+    
+    orange.addEventListener("click", () => {
+        
+        function changeColor(id, elementDiv,){
+        
+            getNotes().filter((note) => note.id !== id);
+   
+            elementDiv.style.backgroundColor = "#ffb86c";
+       };
+
+       changeColor(id, elementDiv);
+
+    });
 
     function toggleFixNote() {
         const notes = getNotes();
