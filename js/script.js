@@ -14,7 +14,7 @@ function showNotes() {
     
     getNotes().forEach((note) => {
     
-        const noteElement = createNote(note.id, note.content, note.fixed);        
+        const noteElement = createNote(note.id, note.content, note.fixed, note.color);        
     
      notesContainer.appendChild(noteElement);
     });
@@ -34,9 +34,15 @@ function addNote() {
         id: generatorId(),
         content: noteInput.value,
         fixed: false,
+        color: "", 
     };
     
-    const noteElement = createNote(noteObject.id, noteObject.content);
+    const noteElement = createNote(
+        noteObject.id,
+        noteObject.content,
+        noteObject.fixed,
+        noteObject.color 
+    );
 
     notesContainer.appendChild(noteElement);
 
@@ -63,6 +69,8 @@ function createNote(id, content, fixed, color){
     const textarea = document.createElement("textarea");
 
     elementDiv.appendChild(textarea);
+
+    elementDiv.style.backgroundColor = color
 
     textarea.value = content;
 
@@ -225,80 +233,37 @@ function createNote(id, content, fixed, color){
     });
 
     yellow.addEventListener("click", () => {
-        
-        function changeColor(id, elementDiv,){
-        
-            getNotes().filter((note) => note.id !== id);
-   
-            elementDiv.style.backgroundColor = "#f1fa8c";
-       };
-
-       changeColor(id, elementDiv);
-
+       
+        changeColor(id, elementDiv, "#f1fa8c");
     });
 
     green.addEventListener("click", () => {
-        
-        function changeColor(id, elementDiv,){
-        
-            getNotes().filter((note) => note.id !== id);
-   
-            elementDiv.style.backgroundColor = "#50fa7b";
-       };
-
-       changeColor(id, elementDiv);
+    
+       changeColor(id, elementDiv, "#50fa7b")
 
     });
 
     pink.addEventListener("click", () => {
-        
-        function changeColor(id, elementDiv,){
-        
-            getNotes().filter((note) => note.id !== id);
-   
-            elementDiv.style.backgroundColor = "#ff79c6";
-       };
-
-       changeColor(id, elementDiv);
+    
+       changeColor(id, elementDiv, "#ff79c6");
 
     });
 
     red.addEventListener("click", () => {
-        
-        function changeColor(id, elementDiv,){
-        
-            getNotes().filter((note) => note.id !== id);
-   
-            elementDiv.style.backgroundColor = "#ff5555";
-       };
-
-       changeColor(id, elementDiv);
+       
+        changeColor(id, elementDiv, "#ff5555");
 
     });
 
     cyan.addEventListener("click", () => {
-        
-        function changeColor(id, elementDiv,){
-        
-            getNotes().filter((note) => note.id !== id);
-   
-            elementDiv.style.backgroundColor = "#8be9fd";
-       };
 
-       changeColor(id, elementDiv);
+       changeColor(id, elementDiv, "#8be9fd");
 
     });
     
     orange.addEventListener("click", () => {
-        
-        function changeColor(id, elementDiv,){
-        
-            getNotes().filter((note) => note.id !== id);
-   
-            elementDiv.style.backgroundColor = "#ffb86c";
-       };
 
-       changeColor(id, elementDiv);
+       changeColor(id, elementDiv, "#ffb86c");
 
     });
 
@@ -316,6 +281,20 @@ function createNote(id, content, fixed, color){
 
     return elementDiv;
 };
+
+// Change colors
+
+function changeColor(id, elementDiv, color) {
+    const notes = getNotes();
+
+    const targetNote = notes.find((note) => note.id === id);
+    
+    targetNote.color = color;
+
+    elementDiv.style.backgroundColor = color;
+    
+    saveNotes(notes);
+}
 
 //Delete function
 
