@@ -160,7 +160,7 @@ header h1{
 .note 
 .bi-file-earmark-plus{
     position: absolute;
-    right: 13px;
+    right: 35px;
     bottom: 4px;
     cursor: pointer;
     font-size: 0.9rem;
@@ -171,7 +171,19 @@ header h1{
 .note 
 .bi-x-lg{
     position: absolute;
-    right: 35px;
+    right: 55px;
+    bottom: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #44475A;
+    transition: 0.3s;
+    opacity: 0;
+}
+
+.note 
+.bi-three-dots{
+    position: absolute;
+    right: 14px;
     bottom: 4px;
     cursor: pointer;
     font-size: 0.9rem;
@@ -181,7 +193,8 @@ header h1{
 }
 
 .note .bi-file-earmark-plus:hover,
-.note .bi-x-lg:hover{
+.note .bi-x-lg:hover,
+.bi-three-dots:hover{
     color: #6272a4;
 }
 
@@ -192,6 +205,73 @@ header h1{
 
 .fixed .bi-pin-fill{
     color: #282a36;
+}
+
+.colors-options{
+    position: absolute;
+    background-color: #44475a;
+    top: -0.9rem;
+    left: 16.5rem;
+    padding: 1.5rem 1rem;
+    border-radius: 5px;
+    z-index: 9999;
+    box-shadow: 3px 1px 5px #16181f;
+}
+
+.colors-options li{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    margin-top: 10px
+}
+
+.colors-options li .color{
+    width: 1rem;
+    height: 1rem;
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+.colors-options li .color:hover{
+    box-shadow: -1px 1px 3px #16181f;
+}
+
+.colors-options .bi-palette-fill{
+    color: #f8f8f2;
+}
+
+.yellow .color{
+    margin-top: 5px;
+    background-color: #f1fa8c;
+}
+
+.green .color{
+    background-color: #50fa7b;
+}
+
+.pink .color{
+    background-color: #ff79c6;
+}
+
+.red .color{
+    background-color: #ff5555;
+}
+
+.cyan .color{
+    background-color: #8be9fd;
+}
+
+.orange .color{
+    background-color: #ffb86c;
+}
+
+.selected{
+    outline: 2px solid #6272a4;
+}
+
+.hide{
+    display: none;
 }
 
 @media (max-width: 450px){

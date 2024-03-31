@@ -14,7 +14,7 @@ function showNotes() {
     
     getNotes().forEach((note) => {
     
-        const noteElement = createNote(note.id, note.content, note.fixed);        
+        const noteElement = createNote(note.id, note.content, note.fixed, note.color);        
     
      notesContainer.appendChild(noteElement);
     });
@@ -34,9 +34,15 @@ function addNote() {
         id: generatorId(),
         content: noteInput.value,
         fixed: false,
+        color: "", 
     };
     
-    const noteElement = createNote(noteObject.id, noteObject.content);
+    const noteElement = createNote(
+        noteObject.id,
+        noteObject.content,
+        noteObject.fixed,
+        noteObject.color 
+    );
 
     notesContainer.appendChild(noteElement);
 
@@ -54,7 +60,7 @@ function generatorId(){
 
 // Create note function
 
-function createNote(id, content, fixed){
+function createNote(id, content, fixed, color){
 
     const elementDiv = document.createElement("div");
 
@@ -63,6 +69,8 @@ function createNote(id, content, fixed){
     const textarea = document.createElement("textarea");
 
     elementDiv.appendChild(textarea);
+
+    elementDiv.style.backgroundColor = color
 
     textarea.value = content;
 
@@ -85,6 +93,110 @@ function createNote(id, content, fixed){
     duplicateIcon.classList.add(...["bi", "bi-file-earmark-plus"]);
 
     elementDiv.appendChild(duplicateIcon);
+    
+    const colorSelectIcon = document.createElement("i")
+
+    colorSelectIcon.classList.add(...["bi", "bi-three-dots"]);
+
+    elementDiv.appendChild(colorSelectIcon);
+
+    //colors menu
+
+    const colorsOptions = document.createElement("ul");
+
+    colorsOptions.classList.add("colors-options", "hide");
+
+    elementDiv.appendChild(colorsOptions);
+
+    const paletteIcon = document.createElement("i");
+
+    paletteIcon.classList.add("bi", "bi-palette-fill");
+
+    colorsOptions.appendChild(paletteIcon);
+
+    //Yellow
+    
+    const liYellow = document.createElement("li");
+
+    liYellow.classList.add("yellow");
+
+    colorsOptions.appendChild(liYellow);
+
+    const yellow = document.createElement("span");
+
+    yellow.classList.add("color");
+
+    liYellow.appendChild(yellow);
+
+    //Green
+
+    const liGreen = document.createElement("li")
+
+    liGreen.classList.add("green");
+
+    colorsOptions.appendChild(liGreen);
+
+    const green = document.createElement("span");
+
+    green.classList.add("color");
+
+    liGreen.appendChild(green);
+
+    //Pink
+
+    const liPink = document.createElement("li")
+
+    liPink.classList.add("pink");
+
+    colorsOptions.appendChild(liPink);
+
+    const pink = document.createElement("span");
+
+    pink.classList.add("color");
+
+    liPink.appendChild(pink);
+
+    //Red
+
+    const liRed = document.createElement("li")
+
+    liRed.classList.add("red");
+
+    colorsOptions.appendChild(liRed);
+
+    const red = document.createElement("span");
+
+    red.classList.add("color");
+
+    liRed.appendChild(red);
+
+    //Cyan
+
+    const liCyan = document.createElement("li")
+
+    liCyan.classList.add("cyan");
+
+    colorsOptions.appendChild(liCyan);
+
+    const cyan = document.createElement("span");
+
+    cyan.classList.add("color");
+
+    liCyan.appendChild(cyan);
+
+    //Orange
+
+    const liOrange = document.createElement("li")
+
+    liOrange.classList.add("orange");
+
+    colorsOptions.appendChild(liOrange);
+
+    const orange = document.createElement("span");
+
+    orange.classList.add("color");
+
+    liOrange.appendChild(orange);
 
     if(fixed){
         elementDiv.classList.add("fixed");
@@ -115,6 +227,45 @@ function createNote(id, content, fixed){
     elementDiv.querySelector(".bi-file-earmark-plus").addEventListener("click", () => {
         copyNote(id);
     });
+    
+    elementDiv.querySelector(".bi-three-dots").addEventListener("click", () => {
+        colorsOptions.classList.toggle("hide");
+    });
+
+    yellow.addEventListener("click", () => {
+       
+        changeColor(id, elementDiv, "#f1fa8c");
+    });
+
+    green.addEventListener("click", () => {
+    
+       changeColor(id, elementDiv, "#50fa7b")
+
+    });
+
+    pink.addEventListener("click", () => {
+    
+       changeColor(id, elementDiv, "#ff79c6");
+
+    });
+
+    red.addEventListener("click", () => {
+       
+        changeColor(id, elementDiv, "#ff5555");
+
+    });
+
+    cyan.addEventListener("click", () => {
+
+       changeColor(id, elementDiv, "#8be9fd");
+
+    });
+    
+    orange.addEventListener("click", () => {
+
+       changeColor(id, elementDiv, "#ffb86c");
+
+    });
 
     function toggleFixNote() {
         const notes = getNotes();
@@ -128,9 +279,22 @@ function createNote(id, content, fixed){
         showNotes();
     };
 
-
     return elementDiv;
 };
+
+// Change colors
+
+function changeColor(id, elementDiv, color) {
+    const notes = getNotes();
+
+    const targetNote = notes.find((note) => note.id === id);
+    
+    targetNote.color = color;
+
+    elementDiv.style.backgroundColor = color;
+    
+    saveNotes(notes);
+}
 
 //Delete function
 
@@ -272,7 +436,6 @@ searchInput.addEventListener("keypress", (e) => {
 exportBtn.addEventListener("click", (e) =>{
  exportData();
 });
-
 
 // INICIALIZATION
 // Run showNote for iniciation the save notes in localstorage
