@@ -181,7 +181,7 @@ header h1{
 }
 
 .note 
-.bi-three-dots{
+.bi-palette{
     position: absolute;
     right: 14px;
     bottom: 4px;
@@ -194,7 +194,7 @@ header h1{
 
 .note .bi-file-earmark-plus:hover,
 .note .bi-x-lg:hover,
-.bi-three-dots:hover{
+.bi-palette:hover{
     color: #6272a4;
 }
 
@@ -307,6 +307,21 @@ header h1{
     
     #exports-notes {
         display: none;
+    }
+
+    .note 
+    .bi-file-earmark-plus{
+    opacity: 1;
+    }
+
+    .note
+    .bi-x-lg{
+        opacity: 1;
+    }
+
+    .note 
+    .bi-palette{
+        opacity: 1;
     }
 
 }

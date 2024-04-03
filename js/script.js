@@ -96,7 +96,7 @@ function createNote(id, content, fixed, color){
     
     const colorSelectIcon = document.createElement("i")
 
-    colorSelectIcon.classList.add(...["bi", "bi-three-dots"]);
+    colorSelectIcon.classList.add(...["bi", "bi-palette"]);
 
     elementDiv.appendChild(colorSelectIcon);
 
@@ -228,7 +228,7 @@ function createNote(id, content, fixed, color){
         copyNote(id);
     });
     
-    elementDiv.querySelector(".bi-three-dots").addEventListener("click", () => {
+    elementDiv.querySelector(".bi-palette").addEventListener("click", () => {
         colorsOptions.classList.toggle("hide");
     });
 
