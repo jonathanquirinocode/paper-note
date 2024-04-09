@@ -296,10 +296,15 @@ header h1{
         font-size: 20px;
             
     }
-    header .bi-search{
+   
+    #search-btn-mobile{
         background-color: #b089e7;
         border-radius: 4px;
         padding: 6px 8px;
+    }
+
+    .note{
+        min-height: 200px;
     }
 
     .mobile-ocult{
@@ -331,6 +336,33 @@ header h1{
     .note 
     .bi-palette{
         opacity: 1;
+    }
+
+}
+
+@media (max-width: 805px){
+        
+    header {
+        padding: 2rem 2rem;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    header h1{
+        font-size: 20px;
+            
+    }
+   
+    #search-btn-mobile{
+        background-color: #b089e7;
+        border-radius: 4px;
+        padding: 6px 8px;
+    }
+
+    .mobile-ocult{
+        display: none;
     }
 
 }
