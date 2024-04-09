@@ -282,7 +282,8 @@ header h1{
     display: none;
 }
 
-@media (max-width: 450px){
+@media (max-width: 425px){
+    
     header {
         padding: 2rem 2rem;
         display: flex;

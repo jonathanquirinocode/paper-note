@@ -5,7 +5,10 @@ const noteInput = document.querySelector("#add-note-input");
 const addNoteBtn = document.querySelector(".add-note-btn");
 const searchInput = document.querySelector("#search-input");
 const exportBtn = document.querySelector("#exports-notes");
+
 const hidingPlace = document.querySelector("#hiding-place");
+
+const searchBtnMobile = document.querySelector(".mobile-search-btn");
 
 //------ FUNCTION -------
 
@@ -390,6 +393,8 @@ function saveNotes(notes){
     localStorage.setItem("notes", JSON.stringify(notes));
 };
 
+//Search
+
 function searchNotes(search){
     const searchResults = getNotes().filter((note) => 
         note.content.includes(search)
@@ -401,7 +406,7 @@ function searchNotes(search){
         cleanNotes();
 
         searchResults.forEach((note) => {
-            const noteElement = createNote(note.id, note.content, note.fixed);
+            const noteElement = createNote(note.id, note.content, note.fixed, note.color);
             notesContainer.appendChild(noteElement);
         }); 
         return;
@@ -438,7 +443,18 @@ searchInput.addEventListener("keypress", (e) => {
     };
 });
 
-exportBtn.addEventListener("click", (e) =>{
+searchBtnMobile.addEventListener("click", () => {
+
+    if ("click") {
+        
+        const search = searchInput.value;
+
+        searchNotes(search);
+    };
+
+});
+
+exportBtn.addEventListener("click", () =>{
  exportData();
 });
 
