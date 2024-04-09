@@ -218,12 +218,12 @@ header h1{
 .colors-options{
     position: absolute;
     background-color: #44475a;
-    top: -0.01rem;
-    left: 16.5rem;
+    top: -0.5rem;
+    left: 13.5rem;
     padding: 1.5rem 1rem;
     border-radius: 5px;
     z-index: 9999;
-    box-shadow: 3px 1px 5px #16181f;
+    box-shadow: -2px 4px 9px #16181f;
 }
 
 .colors-options li{
