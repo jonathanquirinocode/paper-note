@@ -5,6 +5,7 @@ const noteInput = document.querySelector("#add-note-input");
 const addNoteBtn = document.querySelector(".add-note-btn");
 const searchInput = document.querySelector("#search-input");
 const exportBtn = document.querySelector("#exports-notes");
+const hidingPlace = document.querySelector("#hiding-place");
 
 //------ FUNCTION -------
 
@@ -218,7 +219,7 @@ function createNote(id, content, fixed, color){
         toggleFixNote(id);
     });
     
-    //Active function deletNote
+    //Buttons events
     
     elementDiv.querySelector(".bi-x-lg").addEventListener("click", () => {
         deleteNote(id, elementDiv);
@@ -230,6 +231,10 @@ function createNote(id, content, fixed, color){
     
     elementDiv.querySelector(".bi-palette").addEventListener("click", () => {
         colorsOptions.classList.toggle("hide");
+    });
+
+    hidingPlace.addEventListener("click", () => {
+        colorsOptions.classList.add("hide");
     });
 
     yellow.addEventListener("click", () => {
