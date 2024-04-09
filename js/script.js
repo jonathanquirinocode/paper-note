@@ -6,6 +6,10 @@ const addNoteBtn = document.querySelector(".add-note-btn");
 const searchInput = document.querySelector("#search-input");
 const exportBtn = document.querySelector("#exports-notes");
 
+const hidingPlace = document.querySelector("#hiding-place");
+
+const searchBtnMobile = document.querySelector(".mobile-search-btn");
+
 //------ FUNCTION -------
 
 // showNotes is a function for show the notes save in dom
@@ -96,7 +100,7 @@ function createNote(id, content, fixed, color){
     
     const colorSelectIcon = document.createElement("i")
 
-    colorSelectIcon.classList.add(...["bi", "bi-three-dots"]);
+    colorSelectIcon.classList.add(...["bi", "bi-palette"]);
 
     elementDiv.appendChild(colorSelectIcon);
 
@@ -218,7 +222,7 @@ function createNote(id, content, fixed, color){
         toggleFixNote(id);
     });
     
-    //Active function deletNote
+    //Buttons events
     
     elementDiv.querySelector(".bi-x-lg").addEventListener("click", () => {
         deleteNote(id, elementDiv);
@@ -228,8 +232,12 @@ function createNote(id, content, fixed, color){
         copyNote(id);
     });
     
-    elementDiv.querySelector(".bi-three-dots").addEventListener("click", () => {
+    elementDiv.querySelector(".bi-palette").addEventListener("click", () => {
         colorsOptions.classList.toggle("hide");
+    });
+
+    hidingPlace.addEventListener("click", () => {
+        colorsOptions.classList.add("hide");
     });
 
     yellow.addEventListener("click", () => {
@@ -385,6 +393,8 @@ function saveNotes(notes){
     localStorage.setItem("notes", JSON.stringify(notes));
 };
 
+//Search
+
 function searchNotes(search){
     const searchResults = getNotes().filter((note) => 
         note.content.includes(search)
@@ -396,7 +406,7 @@ function searchNotes(search){
         cleanNotes();
 
         searchResults.forEach((note) => {
-            const noteElement = createNote(note.id, note.content, note.fixed);
+            const noteElement = createNote(note.id, note.content, note.fixed, note.color);
             notesContainer.appendChild(noteElement);
         }); 
         return;
@@ -433,7 +443,18 @@ searchInput.addEventListener("keypress", (e) => {
     };
 });
 
-exportBtn.addEventListener("click", (e) =>{
+searchBtnMobile.addEventListener("click", () => {
+
+    if ("click") {
+        
+        const search = searchInput.value;
+
+        searchNotes(search);
+    };
+
+});
+
+exportBtn.addEventListener("click", () =>{
  exportData();
 });
 
