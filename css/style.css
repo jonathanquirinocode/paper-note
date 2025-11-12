@@ -303,6 +303,16 @@ header h1{
         padding: 6px 8px;
     }
 
+    #add-note-container button{
+        border-radius: 4px;
+        width: 2.3rem;
+        background-color: #bd93f9;
+        color: #f8f8f2;
+        transition: 0.4s;
+        cursor: pointer;
+    }
+    
+
     .mobile-ocult{
         display: none;
     }

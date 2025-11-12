@@ -5,6 +5,7 @@ const noteInput = document.querySelector("#add-note-input");
 const addNoteBtn = document.querySelector(".add-note-btn");
 const searchInput = document.querySelector("#search-input");
 const exportBtn = document.querySelector("#exports-notes");
+const newNotesBtn = document.querySelector(".new-note-btn");
 
 const hidingPlace = document.querySelector("#hiding-place");
 
@@ -421,6 +422,16 @@ function searchNotes(search){
 
 // EVENTS
 
+// Button to create new note for mobile
+
+function toggleByResolution() {
+    if(window.innerWidth <= 425) {
+        newNotesBtn.classList.remove("hide");
+    } else {
+        newNotesBtn.classList.add("hide");
+    }
+}
+
 // click add note btn event
 addNoteBtn.addEventListener("click", () => addNote());
 
@@ -459,5 +470,12 @@ exportBtn.addEventListener("click", () =>{
 });
 
 // INICIALIZATION
+
+//Run function to mobile button to create new notes
+toggleByResolution();
+
+//It automatically updates if the user resizes the window
+window.addEventListener("resize", toggleByResolution);
+
 // Run showNote for iniciation the save notes in localstorage
 showNotes();
