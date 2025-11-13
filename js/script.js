@@ -435,6 +435,8 @@ function toggleByResolution() {
 // click add note btn event
 addNoteBtn.addEventListener("click", () => addNote());
 
+newNotesBtn.addEventListener("click", () => addNote());
+
 // Press enter in noteInput for add new note
 noteInput.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
